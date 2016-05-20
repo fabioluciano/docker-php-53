@@ -19,4 +19,8 @@ RUN yum install -y /tmp/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
 RUN printf "\n" | pecl install oci8-2.0.11
 RUN echo "extension=oci8.so" > /etc/php.d/oci8.ini
 
-EXPOSE 80
+EXPOSE 80 443
+
+VOLUME ["/var/log/httpd", "/etc/httpd"]
+
+ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
