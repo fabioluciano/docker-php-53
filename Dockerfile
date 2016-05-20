@@ -2,7 +2,7 @@ FROM centos:6.7
 
 MAINTAINER Fábio Luciano <fabio.goisl@ctis.com.br>
 
-RUN yum groupinstall 'Development Tools' -y && yum install -y httpd php php-pear php-common php-opcache php-mbstring php-opcache php-mcrypt php-intl php-devel php-gd php-ldap php-mysql php-pdo php-pgsql php-xml initscripts &&  yum clean all
+RUN yum groupinstall 'Development Tools' -y && yum install -y httpd mod_ssl openssl php php-pear php-common php-opcache php-mbstring php-opcache php-mcrypt php-intl php-devel php-gd php-ldap php-mysql php-pdo php-pgsql php-xml initscripts &&  yum clean all
 
 # PHP Related
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -21,6 +21,6 @@ RUN echo "extension=oci8.so" > /etc/php.d/oci8.ini
 
 EXPOSE 80 443
 
-VOLUME ["/var/log/httpd", "/etc/httpd"]
+VOLUME ["/var/www", "/var/log/apache2", "/etc/apache2"]
 
-ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
