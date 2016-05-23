@@ -23,4 +23,4 @@ EXPOSE 80 443
 
 VOLUME ["/var/www", "/var/log/apache2", "/etc/apache2"]
 
-ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
