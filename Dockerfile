@@ -1,6 +1,6 @@
 FROM centos:6.7
 
-MAINTAINER Fábio Luciano <fabio.goisl@ctis.com.br>
+MAINTAINER Fábio Luciano <fabioluciano@php.net>
 
 RUN yum groupinstall 'Development Tools' -y && yum install -y httpd mod_ssl openssl php php-pear php-common php-opcache php-mbstring php-opcache php-mcrypt php-intl php-devel php-gd php-ldap php-mysql php-pdo php-pgsql php-xml initscripts &&  yum clean all
 
